@@ -2,7 +2,7 @@ import pandas as pd
 
 def toExcel(data, name):
     # Create a new Excel file
-    excel_file = pd.ExcelWriter(f'{name}.xlsx', engine='xlsxwriter')
+    excel_file = pd.ExcelWriter(f'DataFolder/{name}.xlsx', engine='xlsxwriter')
 
     # Write the data to a sheet in the Excel file
     data.to_excel(excel_file, index=False, sheet_name='Sheet1')
