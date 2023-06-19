@@ -1,28 +1,29 @@
 import importlib
 
-def install_package(package):
+def install_library(package_name):
     try:
-        importlib.import_module(package)
-        print(f"{package} is already installed.")
+        importlib.import_module(package_name)
+        print(f"{package_name} is already installed.")
     except ImportError:
-        print(f"{package} is not installed. Installing...")
-        try:
-            import pip
-            pip.main(['install', package])
-        except AttributeError:
-            import subprocess
-            subprocess.check_call(['pip', 'install', package])
-        print(f"{package} has been installed successfully.")
+        import pip
+        pip.main(['install', package_name])
+        print(f"{package_name} has been installed.")
 
-# List of required packages
-required_packages = [
-    'pandas',
-    'matplotlib',
-    'seaborn',
-    'scikit-learn',
-    'tensorflow',
+# List of libraries to install
+libraries = [
+    "pandas",
+    "numpy",
+    "matplotlib",
+    "seaborn",
+    "scikit-learn",
+    "tensorflow",
+    "keras",
 ]
 
-# Install required packages if not already installed
-for package in required_packages:
-    install_package(package)
+for library in libraries:
+    install_library(library)
+
+# Additional installation for specific modules
+install_library("scipy")  # Required by seaborn
+
+print("All libraries have been installed.")
